@@ -562,6 +562,64 @@
     section{ padding:72px 0; }
     .hero-meta{ gap:24px; }
   }
+
+  /* ---------- Form ---------- */
+  .field-wrap{ display:flex; flex-direction:column; gap:6px; }
+  .field-label{
+    font-family:var(--font-tag);
+    font-size:0.68rem;
+    letter-spacing:0.07em;
+    text-transform:uppercase;
+    color:var(--soil);
+    display:block;
+  }
+  .field-input{
+    width:100%;
+    padding:11px 14px;
+    border:1px solid var(--line);
+    border-radius:2px;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-size:0.95rem;
+    transition:border-color 0.2s, box-shadow 0.2s;
+    outline:none;
+  }
+  .field-input:focus{
+    border-color:var(--evergreen);
+    box-shadow:0 0 0 3px rgba(31,51,40,0.1);
+  }
+  .field-input.error{ border-color:var(--ember); }
+  .field-input::placeholder{ color:rgba(74,59,42,0.4); }
+  textarea.field-input{ font-family:var(--font-body); }
+
+  .check-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    padding:7px 14px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    font-size:0.86rem;
+    color:var(--soil);
+    cursor:pointer;
+    transition:background 0.2s, border-color 0.2s, color 0.2s;
+    user-select:none;
+  }
+  .check-pill:hover{ border-color:var(--evergreen); color:var(--evergreen); }
+  .check-pill input{ display:none; }
+  .check-pill.selected{
+    background:var(--evergreen);
+    border-color:var(--evergreen);
+    color:var(--paper);
+  }
+
+  #quote-form-wrap{ transition:opacity 0.3s; }
+
+  @media (max-width:900px){
+    #contact > .wrap > div{ grid-template-columns:1fr !important; gap:40px !important; }
+    #quote-form-wrap{ padding:28px !important; }
+  }
 </style>
 </head>
 <body>
@@ -838,14 +896,112 @@
     </div>
   </section>
 
-  <!-- ================= CTA / CONTACT ================= -->
-  <section class="cta-section" id="contact">
+  <!-- ================= CONTACT / SCHEDULE ================= -->
+  <section id="contact" style="background:var(--evergreen-deep); padding:110px 0;">
     <div class="wrap">
-      <h2>Let's walk your property.</h2>
-      <p>Tell us what you're picturing — Jeremy will come take a look and put together a real plan and a real price.</p>
-      <div class="cta-row">
-        <a href="tel:+14405676523" class="btn btn-primary">Call (440) 567-6523</a>
-        <a href="#" class="btn btn-outline-light">Request a Quote Online</a>
+      <div style="display:grid; grid-template-columns:1fr 1.4fr; gap:80px; align-items:start;">
+
+        <!-- Left: intro -->
+        <div>
+          <div class="eyebrow" style="color:#E8A47C; margin-bottom:22px;">Schedule a Visit</div>
+          <h2 style="font-family:var(--font-display); font-weight:500; font-size:clamp(2rem,3.4vw,2.9rem); color:var(--paper); line-height:1.12; margin-bottom:20px;">Let's walk your property.</h2>
+          <p style="color:var(--stone); font-size:1.05rem; line-height:1.7; margin-bottom:36px;">Fill out the form and Jeremy will follow up within one business day to confirm a time. No obligation — just a conversation about what you have in mind.</p>
+          <div style="display:flex; flex-direction:column; gap:18px;">
+            <div style="display:flex; align-items:center; gap:14px;">
+              <div style="width:36px; height:36px; border-radius:50%; border:1px solid rgba(245,241,232,0.2); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--stone)" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.11 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+              </div>
+              <a href="tel:+14405676523" style="color:var(--stone-light); font-size:0.95rem;">(440) 567-6523</a>
+            </div>
+            <div style="display:flex; align-items:center; gap:14px;">
+              <div style="width:36px; height:36px; border-radius:50%; border:1px solid rgba(245,241,232,0.2); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--stone)" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <span style="color:var(--stone-light); font-size:0.95rem;">2575 Granger Rd, Medina, OH 44256</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:14px;">
+              <div style="width:36px; height:36px; border-radius:50%; border:1px solid rgba(245,241,232,0.2); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--stone)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </div>
+              <span style="color:var(--stone-light); font-size:0.95rem;">Mon – Fri, 8 AM – 5 PM</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: form -->
+        <div id="quote-form-wrap" style="background:var(--paper); border-radius:4px; padding:44px; position:relative;">
+          <!-- Success state (hidden by default) -->
+          <div id="form-success" style="display:none; text-align:center; padding:40px 0;">
+            <div style="width:56px; height:56px; background:var(--evergreen); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--paper)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+            </div>
+            <h3 style="font-family:var(--font-display); font-size:1.6rem; color:var(--evergreen); margin-bottom:12px;">Request sent!</h3>
+            <p style="color:var(--soil); font-size:0.98rem; line-height:1.65;">Your email app should have opened with the details filled in. Jeremy will follow up within one business day.</p>
+            <p style="color:var(--soil); font-size:0.9rem; margin-top:12px; opacity:0.7;">Didn't open? Call <a href="tel:+14405676523" style="color:var(--ember);">(440) 567-6523</a>.</p>
+          </div>
+
+          <!-- Form -->
+          <div id="quote-form-inner">
+            <h3 style="font-family:var(--font-display); font-size:1.5rem; color:var(--evergreen); margin-bottom:28px; font-weight:500;">Request a Consultation</h3>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+              <div class="field-wrap">
+                <label class="field-label">First Name *</label>
+                <input class="field-input" id="f-first" type="text" placeholder="Jane" required>
+              </div>
+              <div class="field-wrap">
+                <label class="field-label">Last Name *</label>
+                <input class="field-input" id="f-last" type="text" placeholder="Smith" required>
+              </div>
+            </div>
+
+            <div style="margin-bottom:16px;">
+              <label class="field-label">Phone Number *</label>
+              <input class="field-input" id="f-phone" type="tel" placeholder="(440) 000-0000" required>
+            </div>
+
+            <div style="margin-bottom:16px;">
+              <label class="field-label">Email Address</label>
+              <input class="field-input" id="f-email" type="email" placeholder="jane@example.com">
+            </div>
+
+            <div style="margin-bottom:16px;">
+              <label class="field-label">Property Address</label>
+              <input class="field-input" id="f-address" type="text" placeholder="123 Oak St, Medina, OH">
+            </div>
+
+            <div style="margin-bottom:16px;">
+              <label class="field-label">What are you looking to do? *</label>
+              <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:8px;" id="service-checks">
+                <label class="check-pill"><input type="checkbox" value="Patio / Hardscape"> Patio / Hardscape</label>
+                <label class="check-pill"><input type="checkbox" value="Planting / Garden Design"> Planting / Garden Design</label>
+                <label class="check-pill"><input type="checkbox" value="Retaining Wall"> Retaining Wall</label>
+                <label class="check-pill"><input type="checkbox" value="Drainage / Grading"> Drainage / Grading</label>
+                <label class="check-pill"><input type="checkbox" value="Outdoor Lighting"> Outdoor Lighting</label>
+                <label class="check-pill"><input type="checkbox" value="Seasonal Maintenance"> Seasonal Maintenance</label>
+                <label class="check-pill"><input type="checkbox" value="Not sure yet"> Not sure yet</label>
+              </div>
+            </div>
+
+            <div style="margin-bottom:16px;">
+              <label class="field-label">Preferred visit date/time</label>
+              <input class="field-input" id="f-date" type="text" placeholder="e.g. Any weekday morning, or Tue/Thu after 3pm">
+            </div>
+
+            <div style="margin-bottom:28px;">
+              <label class="field-label">Anything else we should know?</label>
+              <textarea class="field-input" id="f-notes" rows="3" placeholder="Rough project description, budget range, urgent timeline, etc." style="resize:vertical;"></textarea>
+            </div>
+
+            <div id="form-error" style="display:none; color:var(--ember); font-size:0.88rem; margin-bottom:16px; font-family:var(--font-tag);"></div>
+
+            <button onclick="submitQuoteForm()" class="btn btn-primary" style="width:100%; justify-content:center; font-size:0.9rem; padding:16px 24px;">
+              Send Quote Request →
+            </button>
+            <p style="font-size:0.8rem; color:var(--soil); opacity:0.65; margin-top:12px; text-align:center;">This opens your email app with everything filled in.</p>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -905,6 +1061,61 @@
       header.style.boxShadow = 'none';
     }
   });
+
+  // Toggle pill checkboxes
+  document.querySelectorAll('.check-pill').forEach(pill => {
+    pill.addEventListener('click', () => pill.classList.toggle('selected'));
+  });
+
+  // Quote form submission
+  function submitQuoteForm(){
+    const first   = document.getElementById('f-first').value.trim();
+    const last    = document.getElementById('f-last').value.trim();
+    const phone   = document.getElementById('f-phone').value.trim();
+    const email   = document.getElementById('f-email').value.trim();
+    const address = document.getElementById('f-address').value.trim();
+    const date    = document.getElementById('f-date').value.trim();
+    const notes   = document.getElementById('f-notes').value.trim();
+    const errEl   = document.getElementById('form-error');
+
+    // Validation
+    const missing = [];
+    if(!first || !last) missing.push('name');
+    if(!phone) missing.push('phone number');
+
+    const services = [...document.querySelectorAll('#service-checks .check-pill.selected')]
+      .map(p => p.textContent.trim());
+    if(!services.length) missing.push('at least one service');
+
+    if(missing.length){
+      errEl.textContent = `Please fill in: ${missing.join(', ')}.`;
+      errEl.style.display = 'block';
+      return;
+    }
+    errEl.style.display = 'none';
+
+    // Build email body
+    const body = [
+      `Name: ${first} ${last}`,
+      `Phone: ${phone}`,
+      email    ? `Email: ${email}` : '',
+      address  ? `Property Address: ${address}` : '',
+      `Services Interested In: ${services.join(', ')}`,
+      date     ? `Preferred Visit Time: ${date}` : '',
+      notes    ? `\nAdditional Notes:\n${notes}` : '',
+    ].filter(Boolean).join('\n');
+
+    const subject = encodeURIComponent(`Quote Request — ${first} ${last}`);
+    const bodyEnc = encodeURIComponent(body);
+
+    window.location.href = `mailto:info@pethslandscaping.com?subject=${subject}&body=${bodyEnc}`;
+
+    // Show success state
+    setTimeout(() => {
+      document.getElementById('quote-form-inner').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    }, 600);
+  }
 </script>
 
 </body>
